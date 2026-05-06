@@ -17,6 +17,7 @@ class Config:
     anthropic_model: str
     db_path: str
     port: int
+    public_base_url: str
 
 
 def load_config() -> Config:
@@ -30,6 +31,7 @@ def load_config() -> Config:
         anthropic_model=os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6"),
         db_path=os.environ.get("DB_PATH", "/app/data/state.db"),
         port=int(os.environ.get("PORT", "8000")),
+        public_base_url=os.environ.get("PUBLIC_BASE_URL", "https://signals-bot.hirecharm.com"),
     )
 
 

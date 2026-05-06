@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import datetime
 import logging
+from pathlib import Path
 
-from . import research, slack, spider
+from . import briefs, research, slack, spider
 from .config import Config
 from .extract import extract_linkedin_url
 from .storage import ProcessedStore
@@ -37,7 +39,6 @@ async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, mess
         )
         return
 
-    # Acknowledge fast so the user knows the bot took the job.
     await slack.add_reaction(cfg.slack_bot_token, channel, message_ts, "hourglass_flowing_sand")
     await slack.post_thread_reply(
         cfg.slack_bot_token,
@@ -52,12 +53,37 @@ async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, mess
         scrape_result = await spider.scrape_linkedin(cfg.spider_api_key, url)
         scraped_md = spider.extract_content(scrape_result)
     else:
-        # Job posting / company page — skip the LinkedIn scrape, let web search do all the work.
         logger.info("Non-profile LinkedIn URL (%s); relying on web search only", url)
 
-    brief = await research.deep_research(
+    parsed = await research.deep_research(
         cfg.anthropic_api_key, cfg.anthropic_model, url, scraped_md
     )
 
-    await slack.post_thread_reply(cfg.slack_bot_token, channel, message_ts, brief)
+    title = parsed.get("title") or "Field Recon Brief"
+    subtitle = parsed.get("subtitle") or ""
+    tldr = parsed.get("tldr") or ""
+    body_html = parsed.get("html_body") or "<p>(No content generated.)</p>"
+
+    today = datetime.date.today().isoformat()
+    html = briefs.render_html(
+        title=title,
+        subtitle=subtitle,
+        linkedin_url=url,
+        body_html=body_html,
+        date=today,
+    )
+    slug = briefs.slug_for(url)
+    briefs_dir = Path(cfg.db_path).parent / "briefs"
+    briefs.save_brief(briefs_dir, slug, html)
+    public_url = f"{cfg.public_base_url.rstrip('/')}/briefs/{slug}"
+
+    msg_lines = [
+        f":mag: *Field recon ready:* <{url}|{title}>",
+        f"_{subtitle}_" if subtitle else "",
+        f"> {tldr}" if tldr else "",
+        f":scroll: Full brief: <{public_url}|signals-bot.hirecharm.com/briefs/{slug}>",
+    ]
+    slack_msg = "\n".join(line for line in msg_lines if line)
+
+    await slack.post_thread_reply(cfg.slack_bot_token, channel, message_ts, slack_msg)
     await slack.add_reaction(cfg.slack_bot_token, channel, message_ts, "robot_face")

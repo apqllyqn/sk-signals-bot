@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from pathlib import Path
 
 from fastapi import BackgroundTasks, FastAPI, Header, HTTPException, Request
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
 
+from . import briefs
 from .config import load_config
 from .handler import handle_reaction
 from .slack import verify_signature
@@ -24,6 +26,17 @@ app = FastAPI(title="SK Signals Bot")
 @app.get("/health")
 async def health():
     return {"ok": True}
+
+
+BRIEFS_DIR = Path(cfg.db_path).parent / "briefs"
+
+
+@app.get("/briefs/{slug}", response_class=HTMLResponse)
+async def serve_brief(slug: str):
+    html = briefs.load_brief(BRIEFS_DIR, slug)
+    if html is None:
+        raise HTTPException(status_code=404, detail="brief not found")
+    return HTMLResponse(content=html)
 
 
 @app.post("/slack/events")
