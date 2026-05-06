@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import logging
 
-from . import slack, spider, summarize
+from . import research, slack, spider
 from .config import Config
 from .extract import extract_linkedin_url
 from .storage import ProcessedStore
 
 logger = logging.getLogger(__name__)
+
+LINKEDIN_PROFILE_HINT = "/in/"
 
 
 async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, message_ts: str) -> None:
@@ -31,18 +33,31 @@ async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, mess
             cfg.slack_bot_token,
             channel,
             message_ts,
-            ":warning: No LinkedIn URL found in this message — nothing to scrape.",
+            ":warning: No LinkedIn URL found in this message — nothing to research.",
         )
         return
 
-    logger.info("Scraping %s for thread %s/%s", url, channel, message_ts)
-    scrape_result = await spider.scrape_linkedin(cfg.spider_api_key, url)
-    content = spider.extract_content(scrape_result)
-
-    summary = await summarize.summarize_profile(
-        cfg.anthropic_api_key, cfg.anthropic_model, url, content
+    # Acknowledge fast so the user knows the bot took the job.
+    await slack.add_reaction(cfg.slack_bot_token, channel, message_ts, "hourglass_flowing_sand")
+    await slack.post_thread_reply(
+        cfg.slack_bot_token,
+        channel,
+        message_ts,
+        f":mag: Running field recon on <{url}> — searching the web, expect 2–4 min.",
     )
 
-    header = f":mag: *Profile scrape:* <{url}>\n\n"
-    await slack.post_thread_reply(cfg.slack_bot_token, channel, message_ts, header + summary)
+    scraped_md = ""
+    if LINKEDIN_PROFILE_HINT in url:
+        logger.info("Scraping %s", url)
+        scrape_result = await spider.scrape_linkedin(cfg.spider_api_key, url)
+        scraped_md = spider.extract_content(scrape_result)
+    else:
+        # Job posting / company page — skip the LinkedIn scrape, let web search do all the work.
+        logger.info("Non-profile LinkedIn URL (%s); relying on web search only", url)
+
+    brief = await research.deep_research(
+        cfg.anthropic_api_key, cfg.anthropic_model, url, scraped_md
+    )
+
+    await slack.post_thread_reply(cfg.slack_bot_token, channel, message_ts, brief)
     await slack.add_reaction(cfg.slack_bot_token, channel, message_ts, "robot_face")
