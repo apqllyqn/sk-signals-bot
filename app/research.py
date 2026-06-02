@@ -80,7 +80,8 @@ Required sections, in order, each starting with an `<h2>`:
 7. `<h2>Board / advisory</h2>` — public boards, audit/gov roles, current dynamics worth knowing.
 8. `<h2>Personal / civic</h2>` — alma mater boards, NACD, charity, sports. Skip if nothing found.
 9. `<h2>Highest-leverage outreach hooks</h2>` — ordered list, 2 to 6 hooks. Each `<li>`: a one-line hook in <strong>, then a one-sentence "why this works" tail referencing the specific fact it builds on.
-10. `<h2>Reach out to</h2>` — a final ranked table with columns Name | Role | LinkedIn | Why first. List 3 to 8 people in priority order, with the warmest path first (often the recruiter or a peer who reposts), the target themselves second, and any decision-influencers after. Every LinkedIn cell must contain a real linkedin.com/in/ URL you found via web_search; if you couldn't find one, write "—" plain.
+10. **(REP-SPECIFIC, conditional)** If a `<REP_CONTEXT>` block is supplied in the user message, add a section `<h2>Your specific angles — {{Rep First Name}}</h2>` BEFORE the "Reach out to" table. This section is the whole reason the rep reacted to the post — it is the most important section in the brief when present. Produce 3 to 6 `<li>` bullets in an `<ol>`. Each bullet MUST cross-reference one concrete signal about the prospect (from your research above) with one concrete fact about the rep (from `<REP_CONTEXT>` — a past account, a past role, an alma mater, a city, a category of work they scaled, an acquisition they lived through). Lead each `<li>` with a one-line angle in `<strong>`, then a one-sentence "why this works for {{Rep First Name}} specifically" tail that names BOTH the prospect signal AND the rep fact you crossed it with. Hard rule: never invent a rep fact — only use what's in `<REP_CONTEXT>`. If you cannot find at least 2 honest cross-references after trying, omit this entire section rather than pad. If `<REP_CONTEXT>` is NOT supplied, skip this section entirely.
+11. `<h2>Reach out to</h2>` — a final ranked table with columns Name | Role | LinkedIn | Why first. List 3 to 8 people in priority order, with the warmest path first (often the recruiter or a peer who reposts), the target themselves second, and any decision-influencers after. Every LinkedIn cell must contain a real linkedin.com/in/ URL you found via web_search; if you couldn't find one, write "—" plain.
 
 ## Hard rules
 
@@ -116,11 +117,32 @@ async def deep_research(
     scraped_markdown: str,
     max_search_uses: int = 15,
     timeout_s: float = 600.0,
+    rep: dict | None = None,
 ) -> dict:
-    """Run agentic web-search research. Returns dict with title/subtitle/tldr/html_body."""
+    """Run agentic web-search research. Returns dict with title/subtitle/tldr/html_body.
+
+    If `rep` is provided (dict with `meta` + `body` from app.reps), inject a
+    REP_CONTEXT block so the model produces the "Your specific angles" section.
+    """
+    rep_block = ""
+    if rep:
+        meta = rep.get("meta") or {}
+        rep_block = (
+            "\n\n<REP_CONTEXT>\n"
+            f"Rep name: {meta.get('name', '')}\n"
+            f"Rep first name: {meta.get('first_name', '')}\n"
+            f"Rep title: {meta.get('title', '')} @ {meta.get('company', '')}\n\n"
+            f"{rep.get('body', '')}\n"
+            "</REP_CONTEXT>\n\n"
+            "This rep reacted to the prospect's LinkedIn post — that is the signal that surfaced this brief. "
+            "You MUST produce the rep-specific \"Your specific angles\" section per the schema above, "
+            "crossing the prospect's research with REP_CONTEXT. Never invent a rep fact."
+        )
+
     user_msg = (
         f"LinkedIn URL: {linkedin_url}\n\n"
-        f"LinkedIn scrape (may be partial):\n---\n{scraped_markdown[:18000]}\n---\n\n"
+        f"LinkedIn scrape (may be partial):\n---\n{scraped_markdown[:18000]}\n---"
+        f"{rep_block}\n\n"
         "Research aggressively with web_search (including LinkedIn URLs for every named person), "
         "then output the Field Recon Brief using the sentinel-delimited format."
     )

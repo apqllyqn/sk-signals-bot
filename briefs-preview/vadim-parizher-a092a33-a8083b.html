@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vadim Parizher — Field Recon Brief</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --muted: #5b5b58;
+    --rule: #d8d6cf;
+    --accent: #b8331a;
+    --code-bg: #f0eee7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
+  }
+  header.kicker {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  header.kicker .label {
+    font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  header.kicker h1 {
+    font-size: 34px;
+    line-height: 1.15;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  header.kicker .sub {
+    color: var(--muted);
+    font-size: 16px;
+  }
+  header.kicker .meta {
+    margin-top: 10px;
+    font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  header.kicker .meta a { color: var(--muted); }
+  h2 {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+    margin: 36px 0 14px;
+    color: var(--accent);
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+  h3 {
+    font-size: 18px;
+    margin: 18px 0 6px;
+    font-weight: 600;
+  }
+  p, li { margin: 0 0 10px; }
+  ul, ol { padding-left: 22px; }
+  ul li::marker { color: var(--accent); }
+  ol li::marker { color: var(--accent); font-weight: 600; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 4px 14px;
+    margin: 12px 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+  code, .mono {
+    font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.92em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pill {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--code-bg);
+    color: var(--muted);
+  }
+  .pill.confirmed { background: #1a1a1a; color: #fafaf7; }
+  .pill.likely { background: #f4ddd6; color: var(--accent); }
+  .pill.open { background: var(--accent); color: #fafaf7; }
+  footer {
+    margin-top: 56px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12px;
+    font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="kicker">
+    <div class="label">Field Recon Brief</div>
+    <h1>Vadim Parizher</h1>
+    <div class="sub">Chief Technology Officer, El Pollo Loco, Inc.</div>
+    <div class="meta">
+      Compiled 2026-05-20 ·
+      <a href="https://www.linkedin.com/in/vadim-parizher-a092a33/" target="_blank" rel="noopener">LinkedIn profile</a>
+    </div>
+  </header>
+  <h2>Where they'll physically be</h2>
+
+<ul>
+  <li>
+    <span class="pill confirmed">CONFIRMED</span>
+    <strong><a href="https://fstec.com/profile/vadim-parizher">FSTEC</a></strong> (Hospitality Technology's annual restaurant-tech conference) — Vadim has a speaker profile on FSTEC.com from his Taco Bell tenure and is a repeat presence in the Hospitality Technology ecosystem. FSTEC 2026 is the highest-probability annual venue for a newly-minted QSR CTO to re-introduce himself to the vendor community.
+  </li>
+  <li>
+    <span class="pill confirmed">CONFIRMED</span>
+    <strong><a href="https://www.murtec.com/2025/MURTECContentCouncil">MURTEC Content Council</a></strong> — Vadim was a named member of the MURTEC Content Council (at Taco Bell) and has spoken at <a href="https://www.murtec.com/2021/speaker/229819/vadim-parizher">MURTEC 2021</a>, <a href="https://www.murtec.com/2023/speaker/675540/vadim-parizher">MURTEC 2023</a>, and <a href="https://www.murtecsummit.com/2024/speaker/1376282/vadim-parizher">MURTEC Executive Summit 2024</a>. MURTEC 2026 ran March 9–11 at Caesars Palace, Las Vegas — he almost certainly attended in his new CTO capacity; watch for a speaker slot in 2027.
+  </li>
+  <li>
+    <span class="pill confirmed">CONFIRMED</span>
+    <strong><a href="https://www.scalecomputing.com/press-releases/fourth-annual-scale-computing-platform-summit-april-14-16-2026">Scale Computing Platform//2026 Summit</a></strong>, April 14–16, 2026, Resorts World, Las Vegas — Vadim was announced as a keynote speaker (still listed under his Taco Bell title, but event is current). He was the confirmed speaker for Scale Computing's edge-computing flagship event.
+  </li>
+  <li>
+    <span class="pill confirmed">CONFIRMED</span>
+    <strong><a href="https://informaconnect.com/restaurant-leadership-conference/speakers/vadim-parizher/">Restaurant Leadership Conference</a></strong> (Informa) — Vadim has been a speaker here as well; has a live profile on the Informa site.
+  </li>
+  <li>
+    <span class="pill likely">LIKELY</span>
+    <strong>NRF / Shoptalk / CES</strong> — El Pollo Loco's digital sales mix hit 27% of revenue in Q3 2025 and the brand has an explicit AI integration mandate. New CTOs on a digital transformation mandate commonly attend these broader tech/retail events in their first year to benchmark and vendor-shop. No confirmed presence found, but industry pattern strongly suggests it.
+  </li>
+  <li>
+    <span class="pill likely">LIKELY</span>
+    <strong>Chief Data &amp; Analytics Officer Exchange</strong> (IQPC/Intelligent Automation Network) — Vadim was a named speaker at this event while at Taco Bell (January 2023). His focus on data analytics and BI has been a constant across roles; likely to re-engage with this circuit from El Pollo Loco.
+  </li>
+  <li>
+    <span class="pill likely">LIKELY</span>
+    <strong>Edge Computing World / Edge World Summit</strong> — Vadim spoke at Edge Computing World 2024 (Silicon Valley, April 2–3) on Taco Bell's edge computing transformation. He has a live speaker profile there. Given his known relationship with Scale Computing (an edge vendor), this circuit is a repeat pattern.
+  </li>
+</ul>
+
+<h2>Physical footprint</h2>
+
+<ul>
+  <li><strong>HQ:</strong> El Pollo Loco Support Center, 3535 Harbor Blvd, Suite 100, Costa Mesa, CA 92626. This is the nerve center for all tech decisions.</li>
+  <li><strong>Personal base:</strong> Irvine, CA — Vadim has lived in Irvine throughout his Taco Bell tenure and beyond. Costa Mesa HQ is ~5 miles from his home base. This is a purely in-person-accessible Southern California exec.</li>
+  <li><strong>Restaurant footprint:</strong> ~500+ locations across CA, AZ, NV, CO, TX, and now expanding. El Pollo Loco opened its 500th location in Colorado Springs in 2025 and is planning ~18–20 new units in 2026, mostly outside California — meaning Vadim's tech stack must scale nationally for the first time.</li>
+  <li><strong>Kiosk rollout:</strong> Company completed its kiosk rollout across all company-owned restaurants by Q1 2025. Kiosk fleet is live systemwide.</li>
+  <li><strong>Cloud-POS:</strong> "The entire system recently transitioned to a cloud-enabled point-of-sale platform" — this is a fresh, system-wide rollout that Vadim is inheriting and optimizing, not building from scratch.</li>
+  <li><strong>Innovation pattern:</strong> During Taco Bell tenure, Vadim was a primary driver of edge computing at restaurant locations and serverless architecture — expect him to bring similar infrastructure modernization thinking to El Pollo Loco.</li>
+</ul>
+
+<h2>Recent media (last ~12mo)</h2>
+
+<ul>
+  <li>
+    <strong><a href="https://www.nrn.com/quick-service/el-pollo-loco-s-culinary-and-operational-investments-are-paying-off">Nation's Restaurant News</a></strong>, March 2026 — Coverage of EPL's Q4 2025 earnings, naming Vadim's hire as a key investment: <em>"To support the continuing acceleration in technology and artificial intelligence, El Pollo Loco hired a new chief technology officer; Vadim Parizher joined the company this month after spending more than 8 years with Taco Bell."</em> Sets his mandate explicitly as AI + tech acceleration.
+  </li>
+  <li>
+    <strong><a href="https://www.qsrmagazine.com/story/el-pollo-loco-sees-strong-demand-in-new-markets-plans-faster-expansion/">QSR Magazine</a></strong>, March 2026 — Called out as a notable investment alongside the new cloud-enabled POS system: <em>"Other notable investments include a new cloud-enabled POS system… and the hiring of chief technology officer Vadim Parizher, who previously spent time at Taco Bell."</em>
+  </li>
+  <li>
+    <strong><a href="https://www.fool.com/earnings/call-transcripts/2026/03/17/el-pollo-loco-loco-q4-2025-earnings-transcript/">Motley Fool / El Pollo Loco Q4 2025 Earnings Call</a></strong>, March 17, 2026 — CEO Liz Williams stated on the earnings call: <em>"Together with a strong tech team already in place, Vadim will shape our technology investment to provide a powerful foundation to support our growth."</em> This is a board-level public commitment to his tech mandate.
+  </li>
+  <li>
+    <strong><a href="https://www.linkedin.com/posts/vadimparizher_edge-computing-helps-feed-taco-bells-digital-activity-6989350263601983488-uhWn">WSJ / LinkedIn post</a></strong>, Oct 2022 — Vadim shared a WSJ interview on edge computing at Taco Bell: <em>"I was happy to sit down with WSJ for a great interview."</em> Demonstrates WSJ-level press access and comfort with national tech media.
+  </li>
+  <li>
+    <strong><a href="https://www.edgecomputingworld.com/speakers/vadim-parizher/">Edge World Summit</a></strong>, April 2024 — Keynote at Silicon Valley edge computing conference while still at Taco Bell, focused on next-gen order processing, data analytics, eCommerce, CRM, and B2B data integration.
+  </li>
+</ul>
+
+<h2>LinkedIn engagement signals</h2>
+
+<ul>
+  <li><strong>Profile URL:</strong> <a href="https://www.linkedin.com/in/vadim-parizher-a092a33/">linkedin.com/in/vadim-parizher-a092a33</a> (also resolves at <a href="https://www.linkedin.com/in/vadimparizher">vadimparizher</a>)</li>
+  <li><strong>Post themes at Taco Bell:</strong> Edge computing, serverless architecture, data analytics, order accuracy, digital commerce, team recognition, tech conference amplification, and — notably — co-authored a serverless case study book (Taco Bell chapter). Technically deep but also business-outcome focused in his public framing.</li>
+  <li><strong>Media amplifier:</strong> <em>Hospitality Technology / Robert Firpo-Cappiello</em> (Editor-in-Chief, HT) is the highest-value warm path — he has moderated multiple sessions with Vadim and is the gatekeeper for MURTEC content. Engaging Firpo-Cappiello or the HT editorial team surfaces Vadim naturally.</li>
+  <li><strong>Peer amplifier:</strong> <em>Robbie Kohler</em> (Senior Director of Software Engineering, Taco Bell) co-authored the serverless case study with Vadim and likely reposts his content. A warm outreach through Kohler could bridge to Vadim's new role.</li>
+  <li><strong>New-role signal:</strong> His X/Twitter handle is <a href="https://twitter.com/vparizher">@vparizher</a> — active enough to have a public profile. He has also posted about competitive table tennis and cycling, which are personal rapport hooks if you find a shared interest.</li>
+  <li><strong>Warm-path entry point:</strong> <strong>Clark Matthews</strong> (CIO, El Pollo Loco) — per his LinkedIn activity, Clark has been at EPL for years, is active on LinkedIn, congratulates team members publicly, and specifically called out the Loco Rewards app relaunch team. He is the internal connector most likely to vouch for a vendor conversation with the new CTO.</li>
+</ul>
+
+<h2>Inner circle</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Why they matter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://www.linkedin.com/in/clark-matthews-6571275/">Clark Matthews</a></td>
+      <td>Chief Information Officer, El Pollo Loco</td>
+      <td>Named alongside Vadim in the Annual Report; runs IT infrastructure that Vadim's engineering strategy sits on top of. Been at EPL long enough to be the institutional-knowledge holder. Highest-probability internal sponsor for any vendor conversation with the new CTO. Active LinkedIn poster.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.google.com/search?q=Elizabeth+%22Liz%22+Williams+El+Pollo+Loco+CEO+linkedin">Elizabeth "Liz" Williams</a></td>
+      <td>CEO &amp; Director, El Pollo Loco</td>
+      <td>Former CFO and President of Taco Bell International — the same Yum! Brands ecosystem Vadim comes from. She personally sanctioned Vadim's hire and publicly committed to his AI/tech mandate on the Q4 2025 earnings call. Understanding her growth agenda (500+ units, national expansion, digital mix target) is the key to framing any Vadim pitch.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.linkedin.com/in/olivia-ross/">Olivia Ross</a></td>
+      <td>Head of CRM, Loyalty &amp; E-Commerce, El Pollo Loco</td>
+      <td>The person who owns the Loco Rewards app, the AI personalization stack, and the CRM/loyalty vendor relationships (Punchh, Olo, Brightloom, Branch). She is Vadim's most important internal partner on the digital/loyalty side. Any mobile app or loyalty-adjacent pitch must go through or alongside her. Named QSR Digital Disruptor and Ad Age Leading Woman 2024.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.google.com/search?q=Jill+Adams+El+Pollo+Loco+CMO+linkedin">Jill Adams</a></td>
+      <td>Chief Marketing Officer, El Pollo Loco</td>
+      <td>Named in the Annual Report C-suite. Loyalty revenue grew 20%+ YoY in Q4 2025 — her campaigns and Vadim's tech stack must work in concert. A pitch that ties tech capability to marketing outcomes (loyalty frequency, delivery conversion) will resonate with both.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.google.com/search?q=Robbie+Kohler+Taco+Bell+Senior+Director+Software+Engineering+linkedin">Robbie Kohler</a></td>
+      <td>Senior Director, Software Engineering, Taco Bell (former Vadim peer)</td>
+      <td>Co-authored a serverless case study book chapter with Vadim, cited in LinkedIn posts as a close collaborator. The highest-trust warm bridge from the Taco Bell ecosystem into Vadim's new world — a mutual connection intro from Kohler would carry significant weight.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.google.com/search?q=Douglas+Babb+El+Pollo+Loco+board+chairman+linkedin">Douglas Babb</a></td>
+      <td>Board Chairman, El Pollo Loco (since Dec 2025)</td>
+      <td>Just became Chairman after Bill Floyd's retirement. Board tenure since 2018. Any vendor relationship that grows to strategic scale will eventually need Board awareness — knowing the governance structure matters for multi-year engagement.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Vendor / stack signals</h2>
+
+<ul>
+  <li><strong>Olo</strong> — Online ordering platform confirmed via EPL job postings (Restaurant Systems Manager role explicitly lists Olo as a required skill) and Olivia Ross's loyalty relaunch credits.</li>
+  <li><strong>Punchh (PAR Technology)</strong> — Named as a loyalty vendor in Olivia Ross's Loco Rewards relaunch post. PAR acquired Punchh; PAR is now a major QSR tech consolidator (also acquired TASK, Plexure, Delaget).</li>
+  <li><strong>Brightloom</strong> — AI personalization vendor named in EPL loyalty posts; used for machine learning-based offer personalization within Loco Rewards.</li>
+  <li><strong>Branch</strong> — Mobile linking/deep-linking vendor named in the Loco Rewards relaunch. Connects web, app, and marketing channels.</li>
+  <li><strong>Restaurant365</strong> — EPL has a published case study on Restaurant365's cloud-based restaurant management / accounting platform.</li>
+  <li><strong>Scale Computing</strong> — Edge computing infrastructure vendor with a confirmed deep relationship from the Taco Bell years. Vadim was a keynote at their 2026 Summit. High probability this relationship follows him to EPL.</li>
+  <li><strong>UberEats / DoorDash / Grubhub</strong> — Confirmed third-party delivery integrations per job postings; delivery grew 12% YoY in 2025 and now represents ~15% of sales.</li>
+  <li><strong>Cloud-enabled POS (newly deployed)</strong> — <span class="pill open">OPEN RFP</span> Vendor is not named publicly in any earnings call or press release. EPL has just completed a full system POS rollout. Vadim's mandate is to optimize and extend this platform with AI. The vendor behind the new POS is the single most valuable intel gap — and the surrounding optimization and integration layer is an open opportunity.</li>
+  <li><strong>AI/ML layer for operations</strong> — <span class="pill open">OPEN RFP</span> The Q4 2025 earnings transcript explicitly states Vadim's mandate includes "further integrating AI and technology in operations." No specific AI platform or vendor for ops-side AI is named. This is the highest-value open slot in the stack.</li>
+  <li><strong>App/mobile development partner</strong> — <span class="pill open">OPEN RFP</span> The Loco Rewards app received a UI/UX refresh and relaunch; Bounteous was credited in the past relaunch. With a new CTO in seat, the existing agency relationship is almost certainly being re-evaluated. No current app dev partner is named in recent filings or press.</li>
+</ul>
+
+<h2>Board / advisory</h2>
+
+<ul>
+  <li><strong>El Pollo Loco Board of Directors</strong> — Vadim is not on the Board; he reports to CEO Liz Williams as part of the C-suite. The Board's new Chairman is Douglas Babb (since December 2025, succeeding Bill Floyd). Frank Garrido was added to the Board in January 2026. Average board tenure is ~5.9 years; average management tenure is only ~1.9 years — meaning the executive team is almost entirely new and relationships are fresh.</li>
+  <li><strong>No personal board or advisory roles found</strong> — No external board seats or advisory roles were surfaced for Vadim in public records. He is early in the CTO seat and is likely heads-down on internal priorities.</li>
+  <li><strong>MURTEC Content Council</strong> — Vadim served as a content curator/council member for MURTEC while at Taco Bell. This is a de facto advisory role in the restaurant-tech industry; expect him to re-engage in this capacity from EPL once he has a few months in seat.</li>
+</ul>
+
+<h2>Personal / civic</h2>
+
+<ul>
+  <li><strong>Education:</strong> BS and MS in Computer Science from California State University, Northridge (CSUN); MBA from Pepperdine University (Malibu, CA). Both institutions are Southern California-based and alumni networks are geographically relevant.</li>
+  <li><strong>Competitive table tennis</strong> — Mentioned consistently across multiple speaker bio sources as a personal passion. A genuine, non-generic rapport hook.</li>
+  <li><strong>Cycling and beach culture</strong> — Also cited consistently; fits with an Irvine/Southern California lifestyle.</li>
+  <li><strong>Career background breadth:</strong> Prior to Taco Bell, held IT leadership roles at Allergan (pharma/aesthetics), Amgen (biotech), AIG (finance), McKesson (healthcare), and NASA/Jet Propulsion Laboratory. This is an unusually varied background for a QSR CTO — he is a systems thinker who has operated in regulated, complex-data environments. This means he will expect vendors to speak to data architecture, security, and scalability, not just features.</li>
+</ul>
+
+<h2>Highest-leverage outreach hooks</h2>
+
+<ol>
+  <li>
+    <strong>The "first 90 days" window: new CTO, live tech stack, open vendor decisions.</strong>
+    Vadim joined in March 2026. He is inheriting a freshly-deployed cloud POS, a completed kiosk rollout, and a CEO-stated mandate to "further integrate AI and technology in operations." This is the exact window where CTOs make foundational vendor decisions. A pitch framed as "here's how we've helped QSR operators unlock value from exactly this stack configuration" lands while the org chart is still fluid.
+  </li>
+  <li>
+    <strong>The unnamed cloud POS vendor is an open integration layer.</strong>
+    EPL's new cloud-enabled POS is live but the vendor is not named publicly. Stable Kernel / Charm can position around the integration, custom middleware, and AI-layer work that sits on top of any POS — without needing the POS vendor relationship to get in the door. The hook is: "We build the intelligence layer between your POS, kiosk, Olo, and loyalty stack."
+  </li>
+  <li>
+    <strong>AI for operations is the explicit board-level mandate with no vendor named.</strong>
+    The Q4 2025 earnings transcript names AI integration in operations as the CTO's stated mandate. No AI ops vendor is publicly named. This is the highest-value open slot and the most defensible entry point for a custom software and AI engineering firm — because it requires bespoke integration, not off-the-shelf product.
+  </li>
+  <li>
+    <strong>App/mobile experience: the Loco Rewards app is the revenue engine and needs a build partner for the next chapter.</strong>
+    Digital sales grew from 17% to 27% of revenue in a single year. Loyalty frequency is up 28% YoY. The app is the channel. With a new CTO evaluating the existing agency stack and a UI/UX refresh already complete, the next evolution (personalization, AI-driven offers, kiosk integration) is the natural next engagement. The prior agency (Bounteous) is a legacy relationship that a new CTO will examine.
+  </li>
+  <li>
+    <strong>Taco Bell-to-EPL continuity: same platform problems, smaller team, bigger urgency.</strong>
+    Vadim spent 8 years solving order processing, data analytics, eCommerce, CRM, and B2B data integration at Taco Bell. El Pollo Loco is a 500-unit chain scaling nationally for the first time. He knows exactly what gaps exist — and he knows what good looks like from a Yum! Brands-scale operation. A pitch that acknowledges "you've seen this at 8,000 units; here's how we help you build it right for 500 on the way to 1,000" is calibrated and credible.
+  </li>
+  <li>
+    <strong>The MURTEC / conference community is the warm door.</strong>
+    Vadim has been a MURTEC speaker, Content Council member, FSTEC presence, Restaurant Leadership Conference panelist, and Edge Computing World keynote. Robert Firpo-Cappiello (HT Editor-in-Chief) has moderated him multiple times. Approaching through this editorial/event network — sponsoring a session, co-presenting a case study, or getting an intro through Firpo-Cappiello — is lower friction than a cold LinkedIn DM to a 60-day-old CTO.
+  </li>
+</ol>
+
+<h2>Your specific angles — Jay</h2>
+
+<ol>
+  <li>
+    <strong>You ran delivery of Coca-Cola's first mobile apps at Sapient; he just inherited a QSR mobile app that is now 27% of revenue and needs to scale nationally.</strong>
+    Jay owns the delivery record of Coca-Cola North America/Global's first mobile app program (Spin the Coke Bottle, Freestyle, Design Machine) at Sapient — real QSR-adjacent mobile at scale. Vadim is stepping into a mobile-first revenue model where the Loco Rewards app grew loyalty frequency 28% YoY. Jay can speak peer-to-peer about what it takes to build and sustain a consumer mobile app at that velocity, not as a vendor pitch but as earned credibility.
+  </li>
+  <li>
+    <strong>You built app growth as a P&amp;L at POSSIBLE/WT Apps for brands like Turner Sports and CNN — he is about to run exactly that problem for Loco Rewards at scale.</strong>
+    Jay's App Growth practice at POSSIBLE turned analytics into a standalone revenue driver. El Pollo Loco's digital business (app + kiosk + web + delivery) is now 27% of revenue and the explicit growth vector. Vadim's mandate is to push that higher. Jay can frame Stable Kernel not as a dev shop but as a firm that has run app growth as a business outcome — directly relevant to Vadim's board-level KPIs.
+  </li>
+  <li>
+    <strong>You scaled agencies through acquisitions and earn-outs three times — he comes from Yum! Brands, a company that built its own proprietary SaaS platform (BYTE by Yum!) and knows what internal-vs.-external build decisions look like.</strong>
+    Vadim was described as "an integral part of inception and implementation of BYTE by Yum!, a comprehensive collection of proprietary SaaS AI-driven products." He knows the internal-build trade-off intimately. Jay has lived through three agency acquisitions (Sapient/Nitro, Acquity/Accenture, POSSIBLE/WPP) and understands how technology capability compounds through the right external partners versus being built from scratch. That fluency in the build-buy-partner decision is a genuine peer conversation, not a vendor pitch.
+  </li>
+  <li>
+    <strong>You built mobile and eCommerce for IHG and Marriott at Accenture/Acquity — hospitality-to-QSR is a tighter leap than it looks, and Vadim is a pre-Taco Bell veteran of AIG, Amgen, and JPL (regulated-data environments), not a career restaurant tech person.</strong>
+    Vadim's non-QSR background (pharma, finance, aerospace) means he approaches technology with a systems architect's mindset, not a "restaurant guy" mindset. Jay's eCommerce and mobile delivery work at IHG and Marriott — similarly complex, multi-location, loyalty-driven brands — gives him a common frame of reference that a pure restaurant-tech rep can't match. Lead with the complexity of the problem, not the industry.
+  </li>
+</ol>
+
+<h2>Reach out to</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>LinkedIn</th>
+      <th>Why first</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><a href="https://www.linkedin.com/in/clark-matthews-6571275/">Clark Matthews</a></strong></td>
+      <td>Chief Information Officer, El Pollo Loco</td>
+      <td><a href="https://www.linkedin.com/in/clark-matthews-6571275/">linkedin.com/in/clark-matthews-6571275</a></td>
+      <td>Most active on LinkedIn of the EPL tech leadership; has been at EPL for years and is the institutional anchor the new CTO relies on. A warm relationship with Clark is the fastest path to a warm intro to Vadim. He knows the vendor history and pain points the new CTO is inheriting.</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://www.linkedin.com/in/vadim-parizher-a092a33/">Vadim Parizher</a></strong></td>
+      <td>Chief Technology Officer, El Pollo Loco</td>
+      <td><a href="https://www.linkedin.com/in/vadim-parizher-a092a33/">linkedin.com/in/vadim-parizher-a092a33</a></td>
+      <td>The primary target. Best timing: 60–90 days into his role (now), before he locks in his vendor roadmap for 2026. Frame around the AI-ops mandate and the open integration layer above the new POS — not a generic capabilities pitch.</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://www.linkedin.com/in/olivia-ross/">Olivia Ross</a></strong></td>
+      <td>Head of CRM, Loyalty &amp; E-Commerce, El Pollo Loco</td>
+      <td><a href="https://www.linkedin.com/in/olivia-ross/">linkedin.com/in/olivia-ross</a></td>
+      <td>Owns the Loco Rewards app and AI personalization stack — she is Vadim's closest partner on the digital side and a highly active LinkedIn voice. A pitch that resonates with Olivia on the app/loyalty experience layer will organically reach Vadim's desk.</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://www.google.com/search?q=Jill+Adams+El+Pollo+Loco+CMO+linkedin">Jill Adams</a></strong></td>
+      <td>Chief Marketing Officer, El Pollo Loco</td>
+      <td>—</td>
+      <td>CMO whose loyalty and digital campaigns depend on the tech stack Vadim is building. A joint tech + marketing pitch (e.g., how custom app features drive loyalty revenue) can be co-sold to both Jill and Vadim simultaneously.</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://www.google.com/search?q=Robert+Firpo-Cappiello+Hospitality+Technology+linkedin">Robert Firpo-Cappiello</a></strong></td>
+      <td>Editor-in-Chief, Hospitality Technology (MURTEC moderator)</td>
+      <td>—</td>
+      <td>Has moderated Vadim on stage multiple times. Sponsoring HT content, co-presenting a case study, or getting introduced through Firpo-Cappiello is the warmest non-cold path into Vadim's world. This is the conference/editorial route.</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://www.google.com/search?q=Elizabeth+Liz+Williams+El+Pollo+Loco+CEO+linkedin">Elizabeth "Liz" Williams</a></strong></td>
+      <td>CEO &amp; Director, El Pollo Loco</td>
+      <td>—</td>
+      <td>Former Taco Bell CFO/President International — the same ecosystem Vadim came from. She is the exec who greenlit his hire and publicly owns the AI/tech growth mandate. Not the first call, but understanding her agenda is essential for any enterprise-level framing.</td>
+    </tr>
+  </tbody>
+</table>
+  <footer>SK Signals Bot · #sk-live-signals · 2026-05-20</footer>
+</div>
+</body>
+</html>

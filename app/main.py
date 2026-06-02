@@ -80,12 +80,14 @@ async def slack_events(
     if channel != cfg.target_channel_id or not message_ts:
         return JSONResponse({"ok": True})
 
-    background.add_task(_run_handler, channel, message_ts)
+    reactor_user_id = event.get("user") or ""
+
+    background.add_task(_run_handler, channel, message_ts, reactor_user_id)
     return JSONResponse({"ok": True})
 
 
-async def _run_handler(channel: str, message_ts: str):
+async def _run_handler(channel: str, message_ts: str, reactor_user_id: str):
     try:
-        await handle_reaction(cfg, store, channel, message_ts)
+        await handle_reaction(cfg, store, channel, message_ts, reactor_user_id)
     except Exception:
         logger.exception("handler failed for %s/%s", channel, message_ts)

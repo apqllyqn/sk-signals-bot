@@ -6,7 +6,7 @@ import datetime
 import logging
 from pathlib import Path
 
-from . import briefs, research, slack, spider
+from . import briefs, reps, research, slack, spider
 from .config import Config
 from .extract import extract_linkedin_url
 from .storage import ProcessedStore
@@ -16,7 +16,13 @@ logger = logging.getLogger(__name__)
 LINKEDIN_PROFILE_HINT = "/in/"
 
 
-async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, message_ts: str) -> None:
+async def handle_reaction(
+    cfg: Config,
+    store: ProcessedStore,
+    channel: str,
+    message_ts: str,
+    reactor_user_id: str = "",
+) -> None:
     if not store.claim(channel, message_ts):
         logger.info("Already processed %s/%s, skipping", channel, message_ts)
         return
@@ -39,12 +45,17 @@ async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, mess
         )
         return
 
+    reps_dir = Path(__file__).resolve().parent.parent / "reps"
+    rep = reps.load_rep_by_slack_id(reps_dir, reactor_user_id) if reactor_user_id else None
+    rep_name = (rep or {}).get("meta", {}).get("name") or ""
+    rep_tag = f" for *{rep_name}*" if rep_name else ""
+
     await slack.add_reaction(cfg.slack_bot_token, channel, message_ts, "hourglass_flowing_sand")
     await slack.post_thread_reply(
         cfg.slack_bot_token,
         channel,
         message_ts,
-        f":mag: Running field recon on <{url}> — searching the web, expect 2–4 min.",
+        f":mag: Running field recon on <{url}>{rep_tag} — searching the web, expect 2–4 min.",
     )
 
     scraped_md = ""
@@ -56,7 +67,7 @@ async def handle_reaction(cfg: Config, store: ProcessedStore, channel: str, mess
         logger.info("Non-profile LinkedIn URL (%s); relying on web search only", url)
 
     parsed = await research.deep_research(
-        cfg.anthropic_api_key, cfg.anthropic_model, url, scraped_md
+        cfg.anthropic_api_key, cfg.anthropic_model, url, scraped_md, rep=rep
     )
 
     title = parsed.get("title") or "Field Recon Brief"
